@@ -19,31 +19,53 @@
     </p>
     <br>
     
-    <form action="#">
-        <p>
-            Please select rock, paper or scissors:
-        </p>
-        <ul>
-            <li>
-                <input type="radio" name="choice" id="rock" value="rock">
-                <label for="rock">Rock</label>
-            </li>
-            <li>
-                <input type="radio" name="choice" id="paper" value="paper">
-                <label for="paper">Paper</label>
-            </li>
-            <li>
-                <input type="radio" name="choice" id="scissors" value="scissors">
-                <label for="scissors">Scissors</label>
-            </li>
-        </ul>
-        <input type="submit" value="Submit" id="submit" href="#">
-    </form>
-    <br>
-    <div class="result"></div>
+    <button class="playGame" href="#">Play game!</button>
 
     <script>
+        //Game is Rock, Paper, Scissors
+        //Player/user will be playing against computer
+        //How to win: Paper beats Rock, Rock beats Scissors, and Scissors beats Paper
+
+        //have computer randomly select either Rock, Paper, or Scissors
+        function computerPlay() {
+            let compChoice = Math.floor(Math.random() * 3) + 1;
+            if (compChoice === 1) {
+                return "rock"
+            } else if (compChoice === 2) {
+                return "paper"
+            } else {
+                return "scissors"
+            }
+        };
+
+        let computerSelection = computerPlay();
+        console.log(computerSelection);
+
+        //compare computer choice to player choice and return appropriate response
+        function playRound(computerSelection, playerSelection) {
+            if (computerSelection === playerSelection) {
+                return "It's a tie! Try again!"
+            } else if ((computerSelection === "paper" && playerSelection === "rock") || (computerSelection === "rock" && playerSelection === "scissors") || (computerSelection === "scissors" && playerSelection === "paper")) {
+                return `You lose! ${computerSelection[0].toUpperCase() + computerSelection.slice(1)} beats ${playerSelection}.`
+            } else {
+                return `Congrats! You win! ${playerSelection[0].toUpperCase() + playerSelection.slice(1)} beats ${computerSelection}.`
+            }
+        };
+
+        //get playerSelection
+        function game() {
+            let playerSelection = prompt("Please enter rock, paper, or scissors:").toLowerCase();
+
+            alert(playRound(computerSelection, playerSelection));
+            console.log(playRound(computerSelection, playerSelection));
+
+            computerSelection = computerPlay();
+            console.log(computerSelection);
+        }
+
         
+        let playGame = document.querySelector(".playGame");
+        playGame.addEventListener('click', game);
     </script>
 </body>
 </html>

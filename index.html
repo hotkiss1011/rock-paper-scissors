@@ -12,20 +12,19 @@
 <body>
     <h1>Welcome to Rock, Paper, Scissors!</h1>
     <p>
-        I have already randomly selected Rock, Paper, or Scissors. Now, it's your turn!
+        I have already randomly selected Rock, Paper, or Scissors. Now, it's your turn! There are 5 rounds.
         <br>
         <br>
         Remember: paper beats rock, rock beats scissors, and scissors beats paper.
     </p>
     <br>
-    
     <button class="playGame" href="#">Play game!</button>
 
     <script>
         //Game is Rock, Paper, Scissors
         //Player/user will be playing against computer
         //How to win: Paper beats Rock, Rock beats Scissors, and Scissors beats Paper
-
+    
         //have computer randomly select either Rock, Paper, or Scissors
         function computerPlay() {
             let compChoice = Math.floor(Math.random() * 3) + 1;
@@ -47,22 +46,29 @@
                 return "It's a tie! Try again!"
             } else if ((computerSelection === "paper" && playerSelection === "rock") || (computerSelection === "rock" && playerSelection === "scissors") || (computerSelection === "scissors" && playerSelection === "paper")) {
                 return `You lose! ${computerSelection[0].toUpperCase() + computerSelection.slice(1)} beats ${playerSelection}.`
-            } else {
+            } else if ((playerSelection === "paper" && computerSelection === "rock") || (playerSelection === "rock" && computerSelection === "scissors") || (playerSelection === "scissors" && computerSelection === "paper")) {
                 return `Congrats! You win! ${playerSelection[0].toUpperCase() + playerSelection.slice(1)} beats ${computerSelection}.`
+            } else {
+                return "Sorry, that is not an option. Please enter rock, paper, or scissors."
             }
         };
 
         //get playerSelection
         function game() {
-            let playerSelection = prompt("Please enter rock, paper, or scissors:").toLowerCase();
+            for (let i = 1; i <= 5; i++) {
+                let playerSelection = prompt(`Round ${i} / 5\nPlease enter rock, paper, or scissors:`).toLowerCase();
 
-            alert(playRound(computerSelection, playerSelection));
-            console.log(playRound(computerSelection, playerSelection));
+                alert(playRound(computerSelection, playerSelection));
+                console.log(playRound(computerSelection, playerSelection));
 
-            computerSelection = computerPlay();
-            console.log(computerSelection);
+                computerSelection = computerPlay();
+                console.log(computerSelection);
+
+                if (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors") {
+                    i--;
+                }
+            }
         }
-
         
         let playGame = document.querySelector(".playGame");
         playGame.addEventListener('click', game);

@@ -6,18 +6,3 @@ body {
     justify-content: center;
     height: 100vh;
 }
-
-ul {
-    margin: 0;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 10px;
-}
-
-.result {
-    margin: 0;
-    text-align: center;
-}

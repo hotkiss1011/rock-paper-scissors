@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="src/index.css">
+
+    <title>Rock, Paper, Scissors</title>
+</head>
+<body>
+    <h1>Welcome to Rock, Paper, Scissors!</h1>
+    <p>
+        I have already randomly selected Rock, Paper, or Scissors. Now, it's your turn!
+        <br>
+        <br>
+        Remember: paper beats rock, rock beats scissors, and scissors beats paper.
+    </p>
+    <br>
+    <p>
+        Please select rock, paper or scissors:
+    </p>
+    <form action="#">
+        <ul>
+            <li>
+                <input type="radio" name="choice" id="rock" value="rock">
+                <label for="rock">Rock</label>
+            </li>
+            <li>
+                <input type="radio" name="choice" id="paper" value="paper">
+                <label for="paper">Paper</label>
+            </li>
+            <li>
+                <input type="radio" name="choice" id="scissors" value="scissors">
+                <label for="scissors">Scissors</label>
+            </li>
+        </ul>
+        <input type="submit" value="Submit" id="submit">
+    </form>
+
+    <div class="result"></div>
+
+    <script>
+        function computerPlay() {
+            //pick a random number between 1 and 3 (3 choices)
+            let random = Math.floor(Math.random() * 3) + 1;
+
+            //translate randomly selected number to rock, paper, or scissors
+            let compChoice;
+            if (random === 1) {
+                compChoice = "rock";
+            } else if (random === 2) {
+                compChoice = "paper";
+            } else {
+                compChoice = "scissors";
+            };
+            return compChoice;
+        };
+
+        let compChoice = computerPlay();
+        console.log(compChoice);
+
+        function gamePlay(playerSelection, computerSelection) {
+            return "Hi";
+        }
+
+        //get user input
+        let submit = document.querySelector("#submit");
+        let radios = document.querySelectorAll('input[name="choice"]');
+       
+        //check user choice against computer choice
+        function userChoice() {
+            //get user choice
+            let choice;
+            for (const radio of radios) {
+                if (radio.checked) {
+                    choice = radio.value;
+                }
+            }
+            console.log(choice)
+            //compare user choice to comp choice and return result
+            //if the user and computer choices are the same, it's a tie
+            
+        }
+
+        submit.addEventListener('click', userChoice);
+    </script>
+</body>
+</html>

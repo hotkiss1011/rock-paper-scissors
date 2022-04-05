@@ -37,55 +37,13 @@
                 <label for="scissors">Scissors</label>
             </li>
         </ul>
-        <input type="submit" value="Submit" id="submit">
+        <input type="submit" value="Submit" id="submit" href="#">
     </form>
-
+    <br>
     <div class="result"></div>
 
     <script>
-        function computerPlay() {
-            //pick a random number between 1 and 3 (3 choices)
-            let random = Math.floor(Math.random() * 3) + 1;
-
-            //translate randomly selected number to rock, paper, or scissors
-            let compChoice;
-            if (random === 1) {
-                compChoice = "rock";
-            } else if (random === 2) {
-                compChoice = "paper";
-            } else {
-                compChoice = "scissors";
-            };
-            return compChoice;
-        };
-
-        let compChoice = computerPlay();
-        console.log(compChoice);
-
-        function gamePlay(playerSelection, computerSelection) {
-            return "Hi";
-        }
-
-        //get user input
-        let submit = document.querySelector("#submit");
-        let radios = document.querySelectorAll('input[name="choice"]');
-       
-        //check user choice against computer choice
-        function userChoice() {
-            //get user choice
-            let choice;
-            for (const radio of radios) {
-                if (radio.checked) {
-                    choice = radio.value;
-                }
-            }
-            console.log(choice)
-            //compare user choice to comp choice and return result
-            //if the user and computer choices are the same, it's a tie
-            
-        }
-
-        submit.addEventListener('click', userChoice);
+        
     </script>
 </body>
 </html>

@@ -7,3 +7,11 @@ body {
     height: 100vh;
     text-align: center;
 }
+
+ul {
+    display: flex;
+    list-style: none;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+}

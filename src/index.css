@@ -1,4 +1,5 @@
 body {
+    font-family:Arial, Helvetica, sans-serif;
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -6,6 +7,7 @@ body {
     justify-content: center;
     height: 100vh;
     text-align: center;
+    background-color: pink;
 }
 
 ul {
@@ -14,4 +16,23 @@ ul {
     gap: 10px;
     margin: 0;
     padding: 0;
+}
+
+button {
+ background-color: rgb(193, 128, 255);
+ color: white;
+ border-radius: 25px;
+ padding: 15px;
+ border: 1px solid rgb(152, 89, 211);
+ font-weight: 800;
+ font-size: 20px;
+}
+
+button:hover {
+    background-color: blueviolet;
+    cursor: pointer;
+}
+
+.results {
+    margin: 25px;
 }

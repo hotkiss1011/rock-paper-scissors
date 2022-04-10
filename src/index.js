@@ -15,38 +15,90 @@ function computerPlay() {
 };
 
 let computerSelection = computerPlay();
-console.log(computerSelection);
 
-//compare computer choice to player choice and return appropriate response
+let playerWin = 0;
+let compWin = 0;
+
+const doc = document.querySelector('body');
+const round = document.createElement('h2');
+round.classList.add('round');
+const score = document.createElement('div');
+score.classList.add('score');
+const results = document.createElement('p');
+results.classList.add('results');
+
 function playRound(computerSelection, playerSelection) {
     if (computerSelection === playerSelection) {
-        return "It's a tie! Try again!"
+        score.innerHTML = `<p><strong>Player</strong>: ${playerWin}</p>
+        <p><strong>Computer</strong>: ${compWin}</p>`;
+        doc.appendChild(score);
+
+        results.textContent = `It's a tie! We both chose ${computerSelection}. Try again!`;
+        doc.appendChild(results);
     } else if ((computerSelection === "paper" && playerSelection === "rock") || (computerSelection === "rock" && playerSelection === "scissors") || (computerSelection === "scissors" && playerSelection === "paper")) {
-        return `You lose! ${computerSelection[0].toUpperCase() + computerSelection.slice(1)} beats ${playerSelection}.`
+        compWin++;
+
+        score.innerHTML = `<p><strong>Player</strong>: ${playerWin}</p>
+        <p><strong>Computer</strong>: ${compWin}</p>`;
+        doc.appendChild(score);
+
+        results.textContent = `You lose! ${computerSelection[0].toUpperCase() + computerSelection.slice(1)} beats ${playerSelection}.`;
+        doc.appendChild(results);
     } else if ((playerSelection === "paper" && computerSelection === "rock") || (playerSelection === "rock" && computerSelection === "scissors") || (playerSelection === "scissors" && computerSelection === "paper")) {
-        return `Congrats! You win! ${playerSelection[0].toUpperCase() + playerSelection.slice(1)} beats ${computerSelection}.`
+        playerWin++;
+
+        score.innerHTML = `<p><strong>Player</strong>: ${playerWin}</p>
+        <p><strong>Computer</strong>: ${compWin}</p>`;
+        doc.appendChild(score);
+
+        results.textContent = `Congrats! You win! ${playerSelection[0].toUpperCase() + playerSelection.slice(1)} beats ${computerSelection}.`;
+        doc.appendChild(results);
     } else {
-        return "Sorry, that is not an option. Please enter rock, paper, or scissors."
+        score.innerHTML = `<p><strong>Player</strong>: ${playerWin}</p>
+        <p><strong>Computer</strong>: ${compWin}</p>`;
+        doc.appendChild(score);
+
+        alert("Sorry, that is not an option. Please enter rock, paper, or scissors.");
     }
 };
 
+let playerSelection = "";
+let btns = document.querySelectorAll('button');
 
+//function listens for button clicks and will run game 5 times
 function game() {
-    for (let i = 1; i <= 5; i++) {
-        //get playerSelection
-        let playerSelection = prompt(`Round ${i} / 5\nPlease enter rock, paper, or scissors:`).toLowerCase();
+    let i = 0;
+    
+    btns.forEach(btn => btn.addEventListener('click', function() {
+        while (i < 5) {
+            i++;
+            round.textContent = `Round ${i} / 5`;
+            doc.appendChild(round);
+            playerSelection = btn.classList.value;
+            playRound(computerSelection, playerSelection, i);
+            computerSelection = computerPlay();
+            break
+        };
+        if(i >= 5) {
+            playRound(computerSelection, playerSelection);
 
-        alert(playRound(computerSelection, playerSelection));
-        console.log(playRound(computerSelection, playerSelection));
+            if (compWin > playerWin) {
+                alert(`Sorry, you lost! ${computerSelection} beats ${playerSelection}! Let's play again!`);
+            } else if (playerWin > compWin) {
+                alert(`Congrats! You won! ${playerSelection} beats ${computerSelection}! Let's play again!`)
+            } else {
+                alert(`We tied! Let's play again!`);
+            };
 
-        computerSelection = computerPlay();
-        console.log(computerSelection);
+            i = 0;
+            compWin = 0;
+            playerWin = 0;
+            round.textContent = `Round ${i} / 5`;
+            score.innerHTML = `<p><strong>Player</strong>: ${playerWin}</p>
+        <p><strong>Computer</strong>: ${compWin}</p>`;
+        };
+    }));
+};
 
-        if (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors") {
-            i--;
-        }
-    }
-}
-
-let playGame = document.querySelector(".playGame");
-playGame.addEventListener('click', game);
+//calls game function
+game();

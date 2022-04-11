@@ -68,34 +68,42 @@ let btns = document.querySelectorAll('button');
 //function listens for button clicks and will run game 5 times
 function game() {
     let i = 0;
-    
+    console.log(computerSelection);
     btns.forEach(btn => btn.addEventListener('click', function() {
         while (i < 5) {
-            i++;
+            playerSelection = btn.classList.value;
+
+            if (playerSelection != computerSelection) {
+                i++;
+            };
+
             round.textContent = `Round ${i} / 5`;
             doc.appendChild(round);
-            playerSelection = btn.classList.value;
-            playRound(computerSelection, playerSelection, i);
+
+            playRound(computerSelection, playerSelection);
+
             computerSelection = computerPlay();
+
             break
         };
         if(i >= 5) {
             playRound(computerSelection, playerSelection);
 
             if (compWin > playerWin) {
-                alert(`Sorry, you lost! ${computerSelection} beats ${playerSelection}! Let's play again!`);
+                results.textContent = `Sorry, you lost! ${computerSelection} beats ${playerSelection}! Let's play again!`
             } else if (playerWin > compWin) {
-                alert(`Congrats! You won! ${playerSelection} beats ${computerSelection}! Let's play again!`)
+                results.textContent = `Congrats! You won! ${playerSelection} beats ${computerSelection}! Let's play again!`
             } else {
-                alert(`We tied! Let's play again!`);
+                results.textContent = `We tied! Let's play again!`
             };
 
             i = 0;
             compWin = 0;
             playerWin = 0;
-            round.textContent = `Round ${i} / 5`;
-            score.innerHTML = `<p><strong>Player</strong>: ${playerWin}</p>
-        <p><strong>Computer</strong>: ${compWin}</p>`;
+            round.textContent = ``;
+            score.innerHTML = ``;
+            results.textContent = ``;
+            
         };
     }));
 };

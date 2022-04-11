@@ -67,10 +67,10 @@ let btns = document.querySelectorAll('button');
 
 //function listens for button clicks and will run game 5 times
 function game() {
-    let i = 1;
+    let i = 0;
     
     btns.forEach(btn => btn.addEventListener('click', function() {
-        while (i < 6) {
+        while (i < 5) {
             i++;
             round.textContent = `Round ${i} / 5`;
             doc.appendChild(round);
@@ -79,7 +79,7 @@ function game() {
             computerSelection = computerPlay();
             break
         };
-        if(i >= 6) {
+        if(i >= 5) {
             playRound(computerSelection, playerSelection);
 
             if (compWin > playerWin) {

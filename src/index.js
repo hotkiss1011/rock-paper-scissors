@@ -79,7 +79,7 @@ function game() {
             computerSelection = computerPlay();
             break
         };
-        if(i >= 5) {
+        if(i >= 6) {
             playRound(computerSelection, playerSelection);
 
             if (compWin > playerWin) {

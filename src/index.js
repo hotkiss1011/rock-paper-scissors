@@ -63,11 +63,13 @@ function playRound(computerSelection, playerSelection) {
 };
 
 let playerSelection = "";
-let btns = document.querySelectorAll('button');
+const btns = document.querySelectorAll('button');
 
 //function listens for button clicks and will run game 5 times
 function game() {
     let i = 0;
+    playerWin = 0;
+    compWin = 0;
     console.log(computerSelection);
     btns.forEach(btn => btn.addEventListener('click', function() {
         while (i < 5) {
@@ -87,23 +89,26 @@ function game() {
             break
         };
         if(i >= 5) {
-            playRound(computerSelection, playerSelection);
+            //playRound(computerSelection, playerSelection);
+            round.innerHTML = `Round ${i} / 5<br>Play again?`;
+
+            let playAgain = document.createElement('button');
+            playAgain.classList.add('playAgain');
+            playAgain.textContent = `Let's play again!`;
+            doc.appendChild(playAgain);
 
             if (compWin > playerWin) {
-                results.textContent = `Sorry, you lost! ${computerSelection} beats ${playerSelection}! Let's play again!`
+                results.textContent = `Sorry, you lost! ${computerSelection} beats ${playerSelection}! Let's play again!`;
             } else if (playerWin > compWin) {
-                results.textContent = `Congrats! You won! ${playerSelection} beats ${computerSelection}! Let's play again!`
+                results.textContent = `Congrats! You won! ${playerSelection} beats ${computerSelection}! Let's play again!`;
             } else {
-                results.textContent = `We tied! Let's play again!`
+                results.textContent = `We tied! Let's play again!`;
             };
 
-            i = 0;
-            compWin = 0;
-            playerWin = 0;
-            round.textContent = ``;
-            score.innerHTML = ``;
-            results.textContent = ``;
-            
+            let playAgainBtn = document.querySelector('.playAgain');
+            playAgainBtn.addEventListener('click', function() {
+                window.location.reload();
+            });
         };
     }));
 };

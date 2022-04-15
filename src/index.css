@@ -7,24 +7,39 @@ body {
     justify-content: center;
     height: 100vh;
     text-align: center;
-    background-color: pink;
+    background-color: rgb(206, 117, 132);
+}
+
+.container {
+    background-color: rgb(84, 17, 146);
+    color: rgb(240, 238, 238);
+    border-radius: 15px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.5), 15px 15px 15px rgb(0,0,0,0.5);
 }
 
 ul {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
     list-style: none;
-    gap: 10px;
     margin: 0;
     padding: 0;
 }
 
 img {
+    margin: 0;
+    padding: 0;
     height: 150px;
+    width: 150px;
 }
 
 button {
     background-color: rgba(0, 0, 0, 0);
-    padding: 15px;
     height: 20px;
     border: none;
     transition: all .3s ease-in-out;

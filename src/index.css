@@ -18,18 +18,20 @@ ul {
     padding: 0;
 }
 
+img {
+    height: 150px;
+}
+
 button {
- background-color: rgb(193, 128, 255);
- color: white;
- border-radius: 25px;
- padding: 15px;
- border: 1px solid rgb(152, 89, 211);
- font-weight: 800;
- font-size: 20px;
+    background-color: rgba(0, 0, 0, 0);
+    padding: 15px;
+    height: 20px;
+    border: none;
+    transition: all .3s ease-in-out;
 }
 
 button:hover {
-    background-color: blueviolet;
+    transform: scale(1.1);
     cursor: pointer;
 }
 

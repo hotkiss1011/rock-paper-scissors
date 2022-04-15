@@ -26,6 +26,7 @@ const score = document.createElement('div');
 score.classList.add('score');
 const results = document.createElement('p');
 results.classList.add('results');
+const container = document.querySelector('.container');
 
 function playRound(computerSelection, playerSelection) {
     if (computerSelection === playerSelection) {
@@ -89,15 +90,15 @@ function game() {
             break
         };
         if(i >= 5) {
-            //playRound(computerSelection, playerSelection);
             round.innerHTML = `Round ${i} / 5<br>Play again?`;
 
             btns.forEach(btn => btn.disabled = true);
 
             let playAgain = document.createElement('button');
             playAgain.classList.add('playAgain');
+            playAgain.setAttribute('style','background-color: #E88AB9; border-radius: 15px; margin: 15px; padding: 15px; display: flex; align-items: center; box-shadow: 0px 4px 8px #e88ab9, 0px -4px 8px #e88ab9, 4px 0px 8px #e88ab9, -4px 0px 8px #e88ab9;')
             playAgain.textContent = `Let's play again!`;
-            doc.appendChild(playAgain);
+            container.appendChild(playAgain);
 
             let playAgainBtn = document.querySelector('.playAgain');
             playAgainBtn.addEventListener('click', function() {

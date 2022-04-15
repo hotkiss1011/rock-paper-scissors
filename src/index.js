@@ -92,18 +92,12 @@ function game() {
             //playRound(computerSelection, playerSelection);
             round.innerHTML = `Round ${i} / 5<br>Play again?`;
 
+            btn.disabled = true;
+
             let playAgain = document.createElement('button');
             playAgain.classList.add('playAgain');
             playAgain.textContent = `Let's play again!`;
             doc.appendChild(playAgain);
-
-            if (compWin > playerWin) {
-                results.textContent = `Sorry, you lost! ${computerSelection} beats ${playerSelection}! Let's play again!`;
-            } else if (playerWin > compWin) {
-                results.textContent = `Congrats! You won! ${playerSelection} beats ${computerSelection}! Let's play again!`;
-            } else {
-                results.textContent = `We tied! Let's play again!`;
-            };
 
             let playAgainBtn = document.querySelector('.playAgain');
             playAgainBtn.addEventListener('click', function() {

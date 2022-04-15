@@ -4,7 +4,7 @@
 
 //have computer randomly select either Rock, Paper, or Scissors
 function computerPlay() {
-    let compChoice = Math.floor(Math.random() * 3) + 1;
+    let compChoice = Math.round(Math.random() * 3);
     if (compChoice === 1) {
         return "rock"
     } else if (compChoice === 2) {
@@ -92,7 +92,7 @@ function game() {
             //playRound(computerSelection, playerSelection);
             round.innerHTML = `Round ${i} / 5<br>Play again?`;
 
-            btn.disabled = true;
+            btns.forEach(btn => btn.disabled = true);
 
             let playAgain = document.createElement('button');
             playAgain.classList.add('playAgain');

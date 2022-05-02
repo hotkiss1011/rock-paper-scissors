@@ -4,10 +4,11 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     height: 100vh;
     text-align: center;
     background-color: rgb(206, 117, 132);
+    gap: 40px;
 }
 
 .container {
@@ -52,4 +53,19 @@ button:hover {
 
 .results {
     margin: 25px;
+}
+
+footer {
+    margin-bottom: 5px;
+    color: white;
+}
+
+a {
+    color: rgb(170, 10, 162);
+    cursor: pointer;
+}
+
+a:hover {
+    color: rgb(96, 3, 172);
+    text-decoration: underline;
 }
